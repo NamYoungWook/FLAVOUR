@@ -1,0 +1,172 @@
+---
+title: "관상동맥 중재술(PCI) 가이드 전략 비교(FLAVOUR)"
+author: "Nam YoungWook"
+format: 
+  revealjs:
+    slide-number: true
+    transition: slide
+    theme: white
+    footer: FFR & IVUS
+editor: visual
+---
+
+## 저널리뷰
+
+<br><br> **Fractional Flow Reserve or**<br> **Intravascular Ultrasonography to Guide PCI**
+
+## 용어 설명
+
+**Coronary Artery Disease(CAD)** : 관상동맥질환 <br> <br>
+
+**Coronary Angiography(CAG)** : 관상동맥 조영술 -\> 혈관에 얇은 관을 넣어서 심장혈관을 관찰하는 검사 <br> <br>
+
+**Percutaneous Coronary Intervention(PCI)** : 경피적 관상동맥 중재술 -\> 혈관에 스텐트를 삽입하거나 풍선으로 확장시키는 방법으로 관상동맥의 협착 부위를 넓혀 주는 시술법 <br><br>
+
+\*관상동맥 : 심장 근육에 혈액을 공급하는 동맥혈관.
+
+## 용어 설명
+
+**Fractional Flow Reserve(FFR)** : 동맥협착이 있는 부분에서 혈액 흐름의 정도를 측정하여 심장혈관의 협착 정도를 평가하는 방법
+
+<br> <br> **Intrvascular Ultrasonography(IVUS)** : 관상동맥의 구조 및 협착을 진단하기 위해 초음파로 확인하는 방법
+
+## 연구 목적
+
+-CAD를 진단하고 PCI를 가이드해왔던 표준 방법은 관상동맥 조영술(CAG)이었다. <br><br> -이 때 추가 정보를 얻기 위해 IVUS와 FFR을 사용하곤 하는데 두 방법 모두 PCI의 가이드 라인을 잡는데 도움을 준다는 연구 결과가 있다. <br><br> - 그러나 두 방법간의 임상 결과 차이에 대한 데이터는 부족하여 **FLAVOUR** 연구를 수행하였다.
+
+## Method {.smaller}
+
+::: panel-tabset
+### 실험설계
+
+- 연구의 초기 목표는 FFR 전략이 IVUS 전략보다 우수함을 증명하는 것이었으나... <br> <br>
+- 이후 발표된 연구에서 IVUS 전략이 약물 침투 스텐트 사용시 임상 결과를 더욱 개선할 수 있음이 확인되어 IVUS 전략에 대한 FFR 전략의 비열등성을 평가하고자 하였다. **Noninferiority** <br><br>
+- 귀무가설 =\> **FFR 그룹의 outcome 발생률은 IVUS 그룹의 발생률과 2.5%(margin) 초과의 차이가 존재한다.**
+
+### Sample size1
+
+\-**sample size** : 1700 (FFR:IVUS = 1:1 랜덤 배정) <br>
+
+(∵ 24개월 내에 FFR 그룹에서는 10%, IVUS 그룹에서는 12%가 primary outcome이 나타날 것으로 가정에 기반함)<br><br> - **Power** : 90% <br><br> - **type I error rate**: 5% (의료 장비 평가) <br><br> - **noninferiority margin** : 2.5% <br><br> - **one-sided 검정+ 95% C.I** <br><br> =\>본래 비열등성 검정에서는 type I error rate 2.5%을 사용한다.
+
+### Sample size2
+
+검정력(1-β)을 구하는 식을 통해 sample size(n)을 구하는 식을 유도가능. Non inferiority 검정을 하기 때문에 margin(δ)을 고려하여 분모를 (d-δ)²로 바꿔서 계산한다. 
+<small>출처 : "보건학 연구에서 요구되는 적정 표본크기 결정 방법" - 서울대학교 보건대학원 김호 교수님</small>
+
+::: columns
+::: {.column width="50%"}
+![](https://user-images.githubusercontent.com/87808247/254565043-d96a2252-a623-4351-8913-a759a00a77fe.png)
+:::
+
+::: {.column width="50%"}
+![](https://user-images.githubusercontent.com/87808247/254565048-669cf062-6d24-4e87-95fb-0d1e35e99e34.png)
+:::
+:::
+
+### Sample size3
+
+[**sample size**](http://powerandsamplesize.com/Calculators/) 링크
+
+::: columns
+::: {.column width="50%"}
+![](https://user-images.githubusercontent.com/87808247/254501012-80ae107d-2cb3-4858-a0a1-5c5d08dff178.png)
+:::
+
+::: {.column width="50%"}
+![](https://user-images.githubusercontent.com/87808247/254568603-ead167cf-d5e1-4c09-ae30-beb3cc929bfe.png)
+:::
+:::
+
+### Sample size4
+
+```{r}
+#| echo: true
+#| eval: true
+z_a=1.645
+z_b=1.282
+P_a=0.1
+P_b=0.12
+margin=0.025
+n_b=(z_a+z_b)^2*((1-P_a)*P_a+P_b*(1-P_b))/(P_a-P_b-margin)^2
+N=n_b*2
+N
+```
+:::
+
+## Analysis {.smaller}
+
+::: panel-tabset
+### 통계분석
+
+생존분석 방법이용
+
+1.  Cox proportional-hazards model - **trial sites(임상 시험장소) and the presence or absence of diabetes mellitus(당뇨병 유무)** 같은 공변량 통제하에 시간&사건 관계 분석 <br>
+
+2.  Kaplan-Meier method - 관찰 시간에 따라 event가 발생한 시점의 사건 발생률을 계산
+
+
+- Intention-to-treat(ITT, 치료의도) & per protocol analysis(프로토콜별 분석) 
+
+### 평가지표
+
+**Primary outcome**<br> 1. Death (사망)<br> 2. Myocardial Infarction (심근경색)<br> 3. Revascularization (연구 기간 내 재혈관화 수술)<br>
+
+FFR 그룹과 IVUS 그룹에서 그룹별 기준에 따라 스텐트 삽입술 시행 후에 추후 경과에서 위 지표들이 어떻게 나타나는지 관찰 (24개월)
+
+**Secondary outcome**<br> 환자와 혈관당 삽입한 스텐트 수, 뇌졸증증 등..
+:::
+
+## Result 1 {.smaller}
+
+-   1682명의 환자 선별<br>
+
+-   FFR 그룹: 838명, IVUS 그룹: 844명 - **Random Assigned**<br>
+
+-   두 그룹 모두 혈관의 특징 유사<br>
+
+-   PCI를 받은 환자 수는 IVUS 그룹(65.3%)에서 FFR 그룹(44.4%)보다 더 많음<br>
+
+-   전체 스텐트 수와 길이는 두 그룹 모두 비슷 <br>
+
+-   혈관당 분석에서 PCI의 빈도는 IVUS 그룹(58.4%)이 FFR 그룹(33.2%)보다 높음.<br>
+
+-   연구 절차 기간 중 19명 환자 적절한 측정 실패, 44명 환자 프로토콜 위반
+
+## Result 2 {.smaller .scrollable}
+
+::: panel-tabset
+### Frimary Outcome
+
+-   환자의 99.2% Follow-up 수행하였고, 14명의 환자는 추적 실패.
+-   평가 기간 동안, Primary-outcome은 FFR 그룹의 67명(8.1%), IVUS 그룹의 71명(8.5%)에서 발생.<br> =\> 0.4% point 차이는 one-sided 95% C.I & 97.5% C.I에 포함, p-value = 0.01<br>
+    => 비열등성을 보임
+
+### Secondary Outcome + other
+
+-   두 그룹에서 이차적 결과의 발생률은 큰 차이가 없었음<br>
+-   성공적 PCI는 PCI 환자의의 52.9%에서 발생하였으며, FFR 그룹과 IVUS 그룹에서 비슷한 비율을 보임(50.1% 대 54.8%).
+
+### Table
+
+![](https://user-images.githubusercontent.com/87808247/254593824-7fc0ee91-6370-48a2-b4e9-f5fba13c245a.png){width="90%," height="30%"}
+:::
+
+## Conclusion {.smaller .scrollable}
+
+::: panel-tabset
+### 결론
+
+-   CAD환자들에서 FFR 가이드 사용은 Primary Outcome 측면에서 IVUS 가이드에 비해 비열등성을 보인다는 것을 확인함.
+-   IVUS 그룹에 비해 FFR 그룹에서 대상 혈관 PCI의 발생률이 낮았고, 이로 인해 스텐트의 삽입이 덜 이루어짐. <br>BUT, 환자 임상보고 결과는 두 그룹에서 비슷하게 확인.
+
+### 한계
+
+-   CAD 환자 중에서도 해부학적으로 복잡성이 낮은 환자들을 선별함<br> =\> 고위험 환자에게 적용 어려움
+-   수술하는 의사들은 연구 그룹 배정을 알고있음.
+-   비아시아인들은 연구에 포함되지 않음...등등
+
+### Figure
+
+![](https://user-images.githubusercontent.com/87808247/254600402-30a9fc72-9dbe-42ce-9df6-e2d96e4837ea.png)
+:::
